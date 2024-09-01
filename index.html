@@ -687,18 +687,20 @@ Sipariş talebinde bulunmak için: https://lnkd.in/gkj6pG_E
       </div>
     </div>
     <!-- mesajlaşma -->
-    <nav
-      class="navbar navbar-expand-xl navbar-light bg-dark position-sticky fixed-bottom border bg-white"
-      style="width: 300px; height: 50px; position: -webkit-sticky; border-radius: 5px; margin-left: auto; right: 15px; position: sticky; overflow: visible;">
-      <a class="navbar-brand" href="#">
-        <img src="img/app.ico" style="width: 30px; height: 30px; border-radius: 50%;"/>
-      </a>
-      <span style="font-size: 14px; font-weight: bold; font-family:Arial, Helvetica, sans-serif;">
-        <strong>Mesajlaşma</strong>
-      </span>
-      <span class="offset-3"><img src="/assets/edit-regular.svg" width="15px" height="15px" ></span>
-      <span><i class="fas fa-ellipsis-h fa-sm ml-3"></i></span>
-      <span><i class="fas fa-chevron-up fa-sm ml-3"></i></span>
-    </nav>
+    <nav class="navbar navbar-expand-xl navbar-light bg-dark position-sticky fixed-bottom border bg-white"
+    style="width: 300px; height: 50px; border-radius: 5px; margin-left: auto; right: 15px; position: sticky; overflow: visible;">
+   <a class="navbar-brand" href="#">
+       <i class="far fa-comments"></i>
+   </a>
+   <span style="font-size: 14px; font-weight: bold; font-family:Arial, Helvetica, sans-serif;">
+       <strong>Mesajlaşma</strong>
+   </span>
+   <span class="offset-3"><img src="/assets/edit-regular.svg" width="15px" height="15px"></span>
+   <span><i id="toggle-icon" class="fas fa-chevron-up fa-sm ml-3" data-toggle="collapse" data-target="#message-box" aria-expanded="false" aria-controls="message-box"></i></span>
+</nav>
+
+<div id="message-box" class="collapse">
+   <textarea class="form-control mt-2" placeholder="Mesajınızı yazın..."></textarea>
+</div>
   </body>
 </html>

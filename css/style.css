@@ -199,3 +199,34 @@ button.ref:hover {
 .p-2 {
   margin-top: -10px;
 }
+/* .messaging {
+  width: 300px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+ */
+.header {
+  cursor: pointer;
+}
+
+textarea.form-control {
+  width: 100%;
+  resize: none;
+}
+#message-box {
+  width: 100%; /* Genişliği tam genişlikte ayarlıyoruz */
+  max-width: 300px; /* Mesajlaşma navbarı ile uyumlu */
+  position: fixed; /* Fixed yerine absolute kullanarak pozisyonu parent'a göre ayarlıyoruz */
+  bottom: 60px; /* Mesajlaşma navbarının hemen üzerinde */
+  right: 15px; /* Sağdan mesafe */
+  z-index: 1050; /* Diğer elemanların üstünde olacak şekilde ayarlıyoruz */
+  border-radius: 5px;
+}
+
+textarea.form-control {
+  width: 100%;
+  resize: none;
+  border-radius: 5px;
+}
