@@ -1,0 +1,443 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #F5F6F5;
+    color: #333333;
+    overflow-x: hidden;
+}
+
+header.sticky {
+    position: sticky;
+    top: 0;
+    background: #2C3E50;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-menu li {
+    position: relative;
+    margin-left: 20px;
+}
+
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.nav-menu li a:hover {
+    color: #3498DB;
+    transform: scale(1.05);
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    background: #2C3E50;
+    list-style: none;
+    padding: 10px;
+    min-width: 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.nav-menu li:hover .submenu {
+    display: block;
+    animation: slideDown 0.3s ease-in-out;
+}
+
+.submenu li a {
+    color: white;
+    padding: 8px;
+    display: block;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transform: translateZ(0);
+    filter: blur(3px);
+    will-change: transform;
+    animation: kenburns-top 10s ease-out infinite both;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #E74C3C;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    background: #C0392B;
+}
+
+.cta-button.delete {
+    background: #7F8C8D;
+}
+
+.cta-button.delete:hover {
+    background: #6C7A89;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    font-size: 2rem;
+    color: white;
+    z-index: 1;
+    cursor: pointer;
+    animation: pulseFade 2s ease-in-out infinite;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.scroll-down:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+.content-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    opacity: 0;
+}
+
+.gallery-controls {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-prev, .gallery-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+.gallery-prev { left: 10px; }
+.gallery-next { right: 10px; }
+.gallery-prev:hover, .gallery-next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.blog-grid, .gallery-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    position: relative;
+    padding: 10px 0;
+    cursor: grab;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    user-select: none;
+}
+
+.blog-grid::-webkit-scrollbar,
+.gallery-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.blog-grid:active, .gallery-grid:active {
+    cursor: grabbing;
+}
+
+.blog-grid .blog-card, .gallery-grid .gallery-item {
+    flex: 0 0 auto;
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+    user-select: none;
+}
+
+.gallery-grid .gallery-item img,
+.gallery-grid .gallery-item video {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
+    user-select: none;
+}
+
+.blog-grid .blog-card:hover,
+.gallery-grid .gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+}
+
+.gallery-grid .gallery-item img:hover,
+.gallery-grid .gallery-item video:hover {
+    transform: translateY(-5px);
+    filter: brightness(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form, .admin-form {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.contact-form label, .admin-form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.contact-form input:focus, .contact-form textarea:focus,
+.admin-form input:focus, .admin-form textarea:focus,
+.admin-form select:focus {
+    border-color: #3498DB;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.contact-form input, .contact-form textarea,
+.admin-form input, .admin-form textarea,
+.admin-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.success, .error {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    opacity: 0;
+    animation: popUp 0.5s ease forwards;
+}
+
+.success { background: #2ECC71; color: white; }
+.error { background: #E74C3C; color: white; }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2C3E50;
+    color: white;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.social-links li a {
+    color: #3498DB;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-links li a:hover {
+    color: #2980B9;
+}
+
+/* Ken Burns Animasyonu */
+@keyframes kenburns-top {
+    0% {
+        transform: scale(1) translateY(0);
+        transform-origin: 50% 16%;
+    }
+    100% {
+        transform: scale(1.25) translateY(-15px);
+        transform-origin: top;
+    }
+}
+
+/* Scroll-Down Animasyonu */
+@keyframes pulseFade {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Mevcut Animasyonlar */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popUp {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes stagger {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate {
+    animation: stagger 0.5s ease-in forwards;
+}
+
+.animate-stagger {
+    opacity: 0;
+    animation: stagger 0.5s ease-in forwards;
+}
+
+.animate-stagger:nth-child(1) { animation-delay: 0.1s; }
+.animate-stagger:nth-child(2) { animation-delay: 0.2s; }
+.animate-stagger:nth-child(3) { animation-delay: 0.3s; }
+.animate-stagger:nth-child(4) { animation-delay: 0.4s; }
+.animate-stagger:nth-child(5) { animation-delay: 0.5s; }
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #2C3E50;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-content {
+        padding: 10px;
+    }
+
+    .scroll-down {
+        font-size: 1.5rem;
+        bottom: 10px;
+    }
+
+    .gallery-grid .gallery-item,
+    .gallery-grid .gallery-item img,
+    .gallery-grid .gallery-item video {
+        width: 200px;
+        height: 133px;
+    }
+
+    .blog-grid .blog-card {
+        width: 200px;
+    }
+
+    .gallery-prev, .gallery-next {
+        padding: 5px;
+        font-size: 1rem;
+    }
+}
